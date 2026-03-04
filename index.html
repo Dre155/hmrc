@@ -302,6 +302,7 @@
         
             const result = await res.json();
             console.log('data sent.', result)
+            form.reset();
           } catch (err) {
             console.error(err);
             console.log('Something went wrong!');
