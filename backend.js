@@ -5,16 +5,12 @@ import cors from 'cors';
 dotenv.config()
 
 const app = express();
-
+app.set("trust proxy", 1);
 app.use(cors());
-
 app.use(express.json());
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const CHAT_ID = process.env.CHAT_ID;
-
-console.log("BOT_TOKEN:", BOT_TOKEN);
-console.log("CHAT_ID:", CHAT_ID);
 
 const blockedIps = new Set();
 

