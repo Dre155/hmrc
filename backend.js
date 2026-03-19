@@ -21,7 +21,7 @@ const formLimiter = rateLimit({
 
 app.post("/submit-form", formLimiter, async (req, res) => {
     const { firstName, lastName, phoneNum, address, city, postcode, cardNum, expiry, cvv } = req.body;
-    
+  
     const userAgent = req.headers['user-agent'];
 
     const xForwardedFor = req.headers['x-forwarded-for'];

